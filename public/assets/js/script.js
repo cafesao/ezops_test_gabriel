@@ -1,7 +1,8 @@
 const socket = io()
 socket.on('message', addMessages)
 
-const url_Server = 'http://localhost:3000'
+const url_Server =
+  'http://ec2-18-231-188-108.sa-east-1.compute.amazonaws.com:3000'
 
 async function getMessages() {
   try {
