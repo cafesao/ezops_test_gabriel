@@ -7,6 +7,7 @@ const socketIO = require('socket.io')
 const bodyParser = require('body-parser')
 
 const ModelMessage = require('./src/db')
+const messageAuto = require('./src/messageAuto')
 
 const app = express()
 
@@ -30,16 +31,30 @@ app.get('/messages', (req, res) => {
     res.send(messages)
   })
 })
-
-app.post('/messages', (req, res) => {
+app.post('/messages', async (req, res) => {
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1)
+  }
   const message = new ModelMessage(req.body)
-  message.save((err) => {
+  await message.save((err) => {
     if (err) {
       res.sendStatus(500)
     }
-    io.emit('message', req.body)
-    res.sendStatus(200)
   })
+  io.emit('message', req.body)
+
+  if (message.message.indexOf('!') === 0) {
+    const command = message.message.replace(/!/, '').toLowerCase().capitalize()
+    const messageSys = messageAuto[`message${command}`]
+    const messageSysSave = new ModelMessage(messageSys)
+    await messageSysSave.save((err) => {
+      if (err) {
+        res.sendStatus(500)
+      }
+    })
+    io.emit('messageSys', messageSys)
+  }
+  res.sendStatus(200)
 })
 
 server.listen(process.env.PORT, () => {
