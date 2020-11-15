@@ -7,9 +7,9 @@ mongoose.connect(
   { useUnifiedTopology: true, useNewUrlParser: true },
   (err) => {
     if (err) {
-      console.log('Erro ao conectar no banco de dados: ', err)
+      console.log('Error connecting to the database: ', err)
     } else {
-      console.log('Banco de dados conectado!')
+      console.log('Connected Database!')
     }
   },
 )
