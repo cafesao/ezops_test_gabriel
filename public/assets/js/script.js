@@ -2,23 +2,7 @@ const socket = io()
 socket.on('message', addMessagesUser)
 socket.on('messageSys', addMessagesSystem)
 
-const url_Server =
-  'http://ec2-18-231-188-108.sa-east-1.compute.amazonaws.com:3000'
-
-async function getMessages() {
-  try {
-    const axiosGet = await axios.get(`${url_Server}/messages`)
-    axiosGet.data.map((val) => {
-      if (val.name === 'Sistema') {
-        addMessagesSystem(val)
-      } else {
-        addMessagesUser(val)
-      }
-    })
-  } catch (error) {
-    console.error(error)
-  }
-}
+const url_Server = 'http://localhost:3000'
 
 function addMessagesUser(message) {
   $('#messages').append(`
@@ -31,19 +15,39 @@ function addMessagesSystem(message) {
        <p id='system'> ${message.message}  </p>`)
 }
 
-async function sendMessage(message) {
-  try {
-    await axios.post(`${url_Server}/messages`, message)
-  } catch (error) {
-    console.error(error)
-  }
+function resetVal() {
   $('#name').val('')
   $('#message').val('')
 }
 
+async function getMessages() {
+  try {
+    const axiosGet = await axios.get(`${url_Server}/messages`)
+    axiosGet.data.map((obj) => {
+      if (obj.name === 'Sistema') {
+        addMessagesSystem(obj)
+      } else {
+        addMessagesUser(obj)
+      }
+    })
+  } catch (error) {
+    addMessagesSystem({ name: 'Sistema', message: 'ERRO!!!' })
+    console.error(error)
+  }
+}
+
+async function sendMessage(message) {
+  try {
+    await axios.post(`${url_Server}/messages`, message)
+  } catch (error) {
+    addMessagesSystem({ name: 'Sistema', message: 'ERRO!!!' })
+    console.error(error)
+  }
+  resetVal()
+}
+
 $(() => {
-  $('#name').val('')
-  $('#message').val('')
+  resetVal()
   $('#send').click(() => {
     sendMessage({
       name: $('#name').val(),

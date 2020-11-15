@@ -1,7 +1,12 @@
-#user {
+p#user {
   color: rgb(45, 29, 187);
 }
 
-#system {
+p#system {
   color: rgb(117, 20, 13);
+}
+
+div#messages {
+  max-height: 400px;
+  text-align: center;
 }
