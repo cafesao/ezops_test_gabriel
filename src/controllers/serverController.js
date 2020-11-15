@@ -29,12 +29,14 @@ module.exports = {
         .toLowerCase()
         .capitalize()
       const messageSys = messageAuto[`message${command}`]
-      await new ModelMessage(messageSys).save((err) => {
-        if (err) {
-          res.sendStatus(500)
-        }
-      })
-      req.io.emit('messageSys', messageSys)
+      if (messageAuto[`message${command}`] !== undefined) {
+        await new ModelMessage(messageSys).save((err) => {
+          if (err) {
+            res.sendStatus(500)
+          }
+        })
+        req.io.emit('messageSys', messageSys)
+      }
     }
     res.sendStatus(200)
   },
