@@ -2,7 +2,7 @@
   "name": "desafio_ezops",
   "version": "1.0.0",
   "main": "server.js",
-  "repository": "https://github.com/cafesao/desafio_EZOps.git",
+  "repository": "https://github.com/cafesao/ezops_test_gabriel.git",
   "author": "Gabriel <gabriel.diasdutra2@gmail.com>",
   "license": "MIT",
   "dependencies": {
