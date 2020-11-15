@@ -27,7 +27,7 @@ module.exports = {
   },
   messageGit: {
     name,
-    message: 'GITHUB: https://github.com/cafesao',
+    message: 'Github: https://github.com/cafesao',
   },
   messageRepo: {
     name,
