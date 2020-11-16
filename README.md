@@ -2,15 +2,15 @@
 
 ## O que é?
 
-É um webchat básico, você pode enviar mensagens de texto e todas as pessoas recebem quase que instantaneamente, graças so Socket IO implementado neste projeto.
+É um webchat básico, você pode enviar mensagens de texto e todas as pessoas recebem quase que instantaneamente, graças ao Socket IO implementado neste projeto.
 
 ## Qual o objetivo do projeto?
 
-E um desafio proposto pela EZOps para testar minha capacidades de programação, junto com o webchat, ainda tem um CI/CD controlado pelo Jenkins e também a aplicação roda em um container, com o Docker.
+É um desafio proposto pela EZOps para testar minhas capacidades de programação, com o webchat, ainda tem um CI/CD controlado pelo Jenkins e também a aplicação roda em um contêiner, com o Docker.
 
 ## Qual a responsabilidade do Jenkins?
 
-A cada commit que eu fizer no código, o Jenkins se responsabiliza em fazer um pull desde commit, fazer o build da imagem e depois subir um container que sera exposto para a internet.
+A cada commit que eu fizer no código, o Jenkins se responsabiliza em fazer um pull desde commit, fazer o build da imagem e depois subir um contêiner que sera exposto para a internet.
 
 ## Conteúdo
 
@@ -46,7 +46,7 @@ Crie um arquivo chamado **.env**, utilize seu editor de código favorito.
 
 ## Passo 3
 
-Insira dois parâmetros neste arquivo
+Insira dois parâmetros neste arquivo:
 
 - PORT = (A porta padrão é **3000** que esta sendo utilizado.)
 - URI = (Insira a URI que você montou no Pre-Passo 2)
@@ -62,13 +62,13 @@ Na const `url_Server`, modifique para apontar para sua maquina local, no caso `h
 ## Passo 6
 
 Depois de ter feito tudo isso, vá até a raiz do projeto com o terminal e digite o comando `sudo docker build -t webchat:1.0 .`
-Esse comando ira montar a imagem que você ira utilizar para iniciar o container.
+Esse comando ira montar a imagem que você ira utilizar para iniciar o contêiner.
 
 ## Passo 7
 
-Agora so falta iniciar o container, então digite o comando `sudo docker run -d -p 3000:3000/tcp webchat:1.0`
+Agora so falta iniciar o contêiner, então digite o comando `sudo docker run -d -p 3000:3000/tcp webchat:1.0`
 
-Pronto a aplicação ja esta rodando em sua maquina, para verificar digite `sudo docker ps` e veja o container que você criou iniciado e funcionando.
+Pronto a aplicação ja esta rodando em sua maquina, para verificar digite `sudo docker ps` e veja o contêiner que você criou iniciado e funcionando.
 
 Note que na parte do código `-p 3000:3000/tcp`, caso você tenha modificado a porta padrão do servidor, você deve colocar a mesma porta aqui.
 
