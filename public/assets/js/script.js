@@ -2,7 +2,8 @@ const socket = io()
 socket.on('message', addMessagesUser)
 socket.on('messageSys', addMessagesSystem)
 
-const url_Server = 'http://ec2-18-231-188-108.sa-east-1.compute.amazonaws.com:3000'
+const url_Server =
+  'http://ec2-18-231-188-108.sa-east-1.compute.amazonaws.com:3000'
 
 function addMessagesUser(message) {
   $('#messages').append(`
@@ -22,8 +23,8 @@ function resetVal() {
 
 async function getMessages() {
   try {
-    const axiosGet = await axios.get(`${url_Server}/messages`)
-    axiosGet.data.map((obj) => {
+    const res = await (await fetch(`${url_Server}/messages`)).json()
+    res.map((obj) => {
       if (obj.name === 'Sistema') {
         addMessagesSystem(obj)
       } else {
@@ -38,7 +39,13 @@ async function getMessages() {
 
 async function sendMessage(message) {
   try {
-    await axios.post(`${url_Server}/messages`, message)
+    await fetch(`${url_Server}/messages`, {
+      method: 'POST',
+      body: JSON.stringify(message),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
   } catch (error) {
     addMessagesSystem({ name: 'Sistema', message: 'ERRO!!!' })
     console.error(error)
