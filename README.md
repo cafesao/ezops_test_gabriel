@@ -15,7 +15,6 @@ A cada commit que eu fizer no código, o Jenkins se responsabiliza em fazer um p
 ## Conteúdo
 
 - [Montando em sua maquina a aplicação](#montar_app)
-- [Utilizando a aplicação na nuvem](#utilizar_nuvem)
 - [Dica da aplicação](#dicas_app)
 
 # Montando em sua maquina a aplicação
@@ -75,14 +74,6 @@ Note que na parte do código `-p 3000:3000/tcp`, caso você tenha modificado a p
 ## Passo 8
 
 Agora abra um navegador e digite `http://localhost:<A porta que você colocou no passo 3, por padrão é 3000>` e aproveite o webchat.
-
-# Utilizando a aplicação na nuvem
-
-<a name="utilizar_nuvem"/>
-
-## Passo único
-
-Abra um navegador e acesse o [Webchat](http://ec2-18-231-188-108.sa-east-1.compute.amazonaws.com:3000) e aproveite o webchat.
 
 # Dica da aplicação
 
