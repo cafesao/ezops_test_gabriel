@@ -90,4 +90,4 @@ Comando / Resposta do servidor
 - !Sistema: **Utilizo o sistema Ubuntu, em uma instância na AWS,**
 - !Mestre: **Quem me criou foi meu mestre Cafesao :),**
 - !Git: **Github: https://github.com/cafesao,**
-- !Repo: **Repositório: https://github.com/cafesao/ezops_test_gabriel,**
+- !Repo: **Repositório: https://github.com/cafesao/ezops_test_gabriel**
